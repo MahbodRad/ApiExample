@@ -1,0 +1,159 @@
+﻿@model ApiExample.Pages.IndexModel
+@using System.Data;
+@using System;
+@{
+    var person = Model.person; 
+}
+@switch (@ViewData["Switch"])
+{
+    case "ListGrp":
+        <div class="overflow-auto">
+            <table class="table">
+                <thead class="">
+                    <tr>
+                        <th><span class="w-fix-75">آیدی</span></th>
+                        <th><span class="w-fix-250">نام گروه</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.listGrp)
+                    {
+                        <tr>
+                            <td>@item.Si</td>
+                            <td>@item.Name</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    break;
+
+    case "ListKala":
+        <div class="overflow-auto">
+            <table class="table">
+                <thead class="">
+                    <tr>
+                        <th><span class="w-fix-75">آیدی</span></th>
+                        <th><span class="w-fix-100">کد کالا</span></th>
+                        <th><span class="w-fix-250">نام کالا</span></th>
+                        <th><span class="w-fix-100">قیمت</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.listKala)
+                    {
+                        <tr>
+                            <td>@item.Si</td>
+                            <td>@item.Code</td>
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    break;
+
+    case "ListPerson":
+        <div class="d-flex flex-wrap">
+            <div class="w-fix-100 m-2">
+                <span class="control-label">آیدی</span>
+                <span class="control-text">@person.ID</span>
+            </div>
+            <div class="w-fix-200 m-2">
+                <span class="control-label">نام</span>
+                <span class="control-text">@person.FName</span>
+            </div>
+            <div class="w-fix-200 m-2">
+                <span class="control-label">فامیلی</span>
+                <span class="control-text">@person.LName</span>
+            </div>
+            <div class="w-fix-125 m-2">
+                <span class="control-label">شماره تلفن</span>
+                <span class="control-text">@person.Mobile</span>
+            </div>
+            <div class="w-fix-125 m-2">
+                <span class="control-label">کد مشتری</span>
+                <span class="control-text">@person.Number</span>
+            </div>
+            <div class="w-fix-100 m-2">
+                <span class="control-label">گروه</span>
+                <span class="control-text">@person.Group</span>
+            </div>
+            <div class="w-fix-100 m-2">
+                <span class="control-label">جنسیت</span>
+                <span class="control-text">@person.Gender</span>
+            </div>
+        </div>
+    break;
+
+
+    case "ListOrders":
+        <div class="overflow-auto">
+            <table class="table">
+                <thead class="">
+                    <tr>
+                        <th><span class="w-fix-75">آیدی فاکتور</span></th>
+                        <th><span class="w-fix-75">آیدی مشتری</span></th>
+                        <th><span class="w-fix-100">تاریخ خرید</span></th>
+                        <th><span class="w-fix-100">مبلغ کالاها</span></th>
+                        <th><span class="w-fix-100">سایر هزینه ها</span></th>
+                        <th><span class="w-fix-100">قابل پرداخت</span></th>
+                        <th><span class="w-fix-200">شعبه</span></th>
+                        <th><span class="w-fix-300">منطقه</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.listOrders)
+                    {
+                        <tr>
+                            <td>@item.OrderID</td>
+                            <td>@item.CustomerID</td>
+                            <td>@item.DateKharid</td>
+                            <td>@item.ProductsCost</td>
+                            <td>@item.OtherCost</td>
+                            <td>@item.TotalAmount</td>
+                            <td>@item.StoreName</td>
+                            <td>@item.AreaDS</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    break;
+
+
+
+
+    case "ListOrderDT":
+        <div class="overflow-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><span class="w-fix-100">کد کالا</span></th>
+                        <th><span class="w-fix-200">نام کالا</span></th>
+                        <th><span class="w-fix-100">مقدار</span></th>
+                        <th><span class="w-fix-100">قیمت</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.listOrderDT)
+                    {
+                        <tr>
+                            <td>@item.ProductCode</td>
+                            <td>@item.KalaName</td>
+                            <td>@item.OrderCount</td>
+                            <td>@item.Price</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        break;
+
+    case "MSG":
+        <div class="row"><div class="col font-17"><p class="bg-Learn w-max-350 mx-auto text-center"><span class="icofont-alarm font-22 text-warning mx-2"></span> @ViewData["MSG"]</p></div></div>
+    break;
+
+}
